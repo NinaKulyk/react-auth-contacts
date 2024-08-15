@@ -1,0 +1,28 @@
+.formWrapper {
+  min-width: 400px;
+  margin-bottom: 40px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 3px gray;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 20px;
+  font-weight: 500;
+  gap: 15px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.formInput {
+  border: 1px solid rgb(199, 199, 199);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.error {
+  color: red;
+}

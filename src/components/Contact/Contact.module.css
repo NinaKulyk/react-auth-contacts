@@ -1,0 +1,18 @@
+.wrapper {
+  min-width: 400px;
+  display: flex;
+  border: 1px solid black;
+  box-shadow: 1px 1px 3px gray;
+  border-radius: 8px;
+  padding: 0 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 500;
+}

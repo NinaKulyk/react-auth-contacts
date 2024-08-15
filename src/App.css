@@ -1,0 +1,13 @@
+#root {
+  text-align: center;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  padding: 40px 0;
+}
