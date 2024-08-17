@@ -1,0 +1,9 @@
+.container {
+  padding: 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 42px;
+  color: #004000;
+}

@@ -1,7 +1,14 @@
-import React from "react";
+import s from "./HomePage.module.css";
 
 const HomePage = () => {
-  return <div>Home</div>;
+  return (
+    <div className={s.container}>
+      <img src="../../../public/img/sdfgh.png" alt="phonebook" width={600} />
+      <h2>
+        ALL YOUR CONTACTS <br /> IN ONE PLACE
+      </h2>
+    </div>
+  );
 };
 
 export default HomePage;
