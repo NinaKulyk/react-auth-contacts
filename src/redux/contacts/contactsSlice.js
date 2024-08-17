@@ -4,7 +4,8 @@ import {
   deleteContactThunk,
   fetchContactsThunk,
 } from "./contactsOps";
-import { selectFilter } from "./filtersSlice";
+import { selectFilter } from "../filters/filtersSlice";
+import { logoutThunk } from "../auth/authOps";
 
 const initialState = {
   items: [],
@@ -25,6 +26,9 @@ const slice = createSlice({
       })
       .addCase(addContactThunk.fulfilled, (state, action) => {
         state.items.push(action.payload);
+      })
+      .addCase(logoutThunk.fulfilled, (state, action) => {
+        return initialState;
       })
       .addMatcher(
         isAnyOf(
@@ -68,8 +72,10 @@ export const selectError = (state) => state.contacts.error;
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter],
   (contacts, filter) => {
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+    return contacts.filter(
+      (contact) =>
+        contact.name.toLowerCase().includes(filter.toLowerCase()) ||
+        contact.number.toLowerCase().includes(filter.toLowerCase())
     );
   }
 );

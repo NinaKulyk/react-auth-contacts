@@ -1,21 +1,12 @@
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   font-family: sans-serif;
   line-height: 1.5;
   font-size: 16px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
+
+  margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #ecffec;
 }
 
 ul,
@@ -30,10 +21,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0;
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 button {
@@ -43,13 +33,16 @@ button {
   height: auto;
   border-radius: 8px;
   border: 1px solid rgb(199, 199, 199);
+  background-color: white;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  transition: background-color 0.25s;
-}
-button:hover {
-  background-color: rgb(194, 194, 194);
+  transition: all 0.2s linear;
+  &:hover {
+    background-color: #81bf80;
+    border: none;
+    transform: scale(1.05);
+  }
 }

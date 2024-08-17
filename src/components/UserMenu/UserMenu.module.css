@@ -1,0 +1,32 @@
+.link {
+  color: black;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.active {
+  color: white;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.item {
+  transition: all 0.2s linear;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.btn {
+  padding: 0;
+  font-size: 22px;
+  background-color: #81bf80;
+  border: none;
+  &:hover {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,16 @@
+.link {
+  color: black;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.active {
+  color: white;
+}
+
+.item {
+  transition: all 0.2s linear;
+  &:hover {
+    transform: scale(1.05);
+  }
+}

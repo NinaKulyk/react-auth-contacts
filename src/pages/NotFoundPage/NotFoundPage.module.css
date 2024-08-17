@@ -1,0 +1,13 @@
+.wrapper {
+  padding: 40px;
+  color: #81bf80;
+}
+
+.text {
+  font-size: 36px;
+}
+
+.link {
+  font-size: 20px;
+  text-decoration: none;
+}

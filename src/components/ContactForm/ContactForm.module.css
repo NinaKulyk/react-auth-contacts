@@ -1,8 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .formWrapper {
   min-width: 400px;
   margin-bottom: 40px;
-  border: 1px solid black;
-  box-shadow: 1px 1px 3px gray;
+  border: none;
+  box-shadow: 1px 1px 5px gray;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
