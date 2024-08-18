@@ -4,6 +4,7 @@ import { FaPhoneAlt, FaUser } from "react-icons/fa";
 import { deleteContactThunk } from "../../redux/contacts/contactsOps";
 import {
   openModal,
+  setModalType,
   setSelectedContactId,
 } from "../../redux/contacts/contactsSlice";
 
@@ -12,6 +13,13 @@ const Contact = ({ name, number, id }) => {
 
   const handleEditClick = () => {
     dispatch(setSelectedContactId(id));
+    dispatch(setModalType("edit"));
+    dispatch(openModal());
+  };
+
+  const handleConfirmDelete = () => {
+    dispatch(setSelectedContactId(id));
+    dispatch(setModalType("confirm"));
     dispatch(openModal());
   };
 
@@ -31,11 +39,7 @@ const Contact = ({ name, number, id }) => {
         <button id={id} type="button" onClick={handleEditClick}>
           Edit
         </button>
-        <button
-          id={id}
-          type="button"
-          onClick={() => dispatch(deleteContactThunk(id))}
-        >
+        <button id={id} type="button" onClick={handleConfirmDelete}>
           Delete
         </button>
       </div>

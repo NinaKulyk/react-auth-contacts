@@ -12,6 +12,7 @@ import { selectIsLoggedIn, selectIsRefreshing } from "./redux/auth/authSlice";
 import { PrivateRoute } from "./Routes/PrivateRoute";
 import { PublicRoute } from "./Routes/PublicRoute";
 import Loading from "./components/Loading/Loading";
+import { Toaster } from "react-hot-toast";
 
 const AppBar = lazy(() => import("./components/AppBar/AppBar"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
@@ -27,10 +28,11 @@ const ClimbingBoxLoader = lazy(() =>
 const Modal = lazy(() => import("./components/Modal/Modal"));
 
 function App() {
+  const dispatch = useDispatch();
+
   const isLoading = useSelector(selectLoading);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
-  const dispatch = useDispatch();
   const isModalOpen = useSelector(selectIsModalOpen);
 
   useEffect(() => {
@@ -42,8 +44,6 @@ function App() {
   useEffect(() => {
     dispatch(getMeThunk());
   }, [dispatch]);
-
-  console.log("isModalOpen:", isModalOpen);
 
   return isRefreshing ? (
     <Loading />
@@ -98,6 +98,7 @@ function App() {
           </div>
         )}
         {isModalOpen && <Modal />}
+        <Toaster />
       </Suspense>
     </>
   );

@@ -7,12 +7,14 @@ import {
 } from "./contactsOps";
 import { selectFilter } from "../filters/filtersSlice";
 import { logoutThunk } from "../auth/authOps";
+import toast from "react-hot-toast";
 
 const initialState = {
   items: [],
   loading: false,
   error: null,
   selectedContactId: null,
+  modalType: null,
   isModalOpen: false,
 };
 
@@ -29,6 +31,10 @@ const slice = createSlice({
     closeModal: (state, action) => {
       state.isModalOpen = false;
       state.selectedContactId = null;
+      state.modalType = null;
+    },
+    setModalType: (state, action) => {
+      state.modalType = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -38,9 +44,17 @@ const slice = createSlice({
       })
       .addCase(deleteContactThunk.fulfilled, (state, action) => {
         state.items = state.items.filter((item) => item.id !== action.payload);
+        toast("Contact deleted 🗑️", {
+          duration: 3000,
+          style: { padding: "20px", fontSize: "18px" },
+        });
       })
       .addCase(addContactThunk.fulfilled, (state, action) => {
         state.items.push(action.payload);
+        toast("Contact added 🎉", {
+          duration: 3000,
+          style: { padding: "20px", fontSize: "18px" },
+        });
       })
       .addCase(editContactThunk.fulfilled, (state, action) => {
         const index = state.items.findIndex(
@@ -114,7 +128,10 @@ export const selectContactById = (state, contactId) => {
 
 export const selectIsModalOpen = (state) => state.contacts.isModalOpen;
 
+export const selectModalType = (state) => state.contacts.modalType;
+
 export const selectSelectedContactId = (state) =>
   state.contacts.selectedContactId;
 
-export const { setSelectedContactId, openModal, closeModal } = slice.actions;
+export const { setSelectedContactId, openModal, closeModal, setModalType } =
+  slice.actions;

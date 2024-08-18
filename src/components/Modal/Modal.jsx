@@ -7,9 +7,13 @@ import {
   closeModal,
   selectContactById,
   selectIsModalOpen,
+  selectModalType,
   selectSelectedContactId,
 } from "../../redux/contacts/contactsSlice";
-import { editContactThunk } from "../../redux/contacts/contactsOps";
+import {
+  deleteContactThunk,
+  editContactThunk,
+} from "../../redux/contacts/contactsOps";
 
 ReactModal.setAppElement("#root");
 
@@ -26,6 +30,7 @@ const validationSchema = Yup.object({
 const Modal = ({ id }) => {
   const dispatch = useDispatch();
   const isModalOpen = useSelector(selectIsModalOpen);
+  const modalType = useSelector(selectModalType);
   const selectedContactId = useSelector(selectSelectedContactId);
   const contact = useSelector((state) =>
     selectContactById(state, selectedContactId)
@@ -36,14 +41,15 @@ const Modal = ({ id }) => {
     number: contact?.number || "",
   };
 
-  const handleSubmit = (values) => {
+  const handleEditSubmit = (values) => {
     dispatch(editContactThunk({ id: selectedContactId, ...values }));
     dispatch(closeModal());
   };
 
-  console.log("isModalOpen", isModalOpen);
-  console.log("selectedContactId", selectedContactId);
-  console.log("contact", contact);
+  const handleConfirmDelete = () => {
+    dispatch(deleteContactThunk(selectedContactId));
+    dispatch(closeModal());
+  };
 
   return (
     <div>
@@ -55,40 +61,62 @@ const Modal = ({ id }) => {
         contentLabel="Contact Modal"
         className={s.modal}
       >
-        <div className={s.formWrapper}>
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            <Form className={s.form}>
-              <label htmlFor="name">
-                <span>Name</span>
-                <Field className={s.formInput} id="name" name="name" />
-                <ErrorMessage
-                  className={s.error}
-                  name="name"
-                  component="span"
-                />
-              </label>
-              <label htmlFor="number">
-                <span>Number</span>
-                <Field className={s.formInput} id="number" name="number" />
-                <ErrorMessage
-                  className={s.error}
-                  name="number"
-                  component="span"
-                />
-              </label>
-              <button id={id} type="submit">
-                Save
+        {modalType === "edit" && contact && (
+          <div className={s.formWrapper}>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={handleEditSubmit}
+            >
+              <Form className={s.form}>
+                <label htmlFor="name">
+                  <span>Name</span>
+                  <Field className={s.formInput} id="name" name="name" />
+                  <ErrorMessage
+                    className={s.error}
+                    name="name"
+                    component="span"
+                  />
+                </label>
+                <label htmlFor="number">
+                  <span>Number</span>
+                  <Field className={s.formInput} id="number" name="number" />
+                  <ErrorMessage
+                    className={s.error}
+                    name="number"
+                    component="span"
+                  />
+                </label>
+                <button id={id} type="submit">
+                  Save
+                </button>
+              </Form>
+            </Formik>
+          </div>
+        )}
+        {modalType === "confirm" && (
+          <div className={s.confContainer}>
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete this contact?</p>
+            <div className={s.btnWrapper}>
+              <button id={id} type="button" onClick={handleConfirmDelete}>
+                YES
               </button>
-            </Form>
-          </Formik>
-        </div>
+              <button type="button" onClick={() => dispatch(closeModal())}>
+                NO
+              </button>
+            </div>
+          </div>
+        )}
       </ReactModal>
     </div>
   );
 };
 
 export default Modal;
+
+{
+  /* <button id={id} type="button" onClick={() => dispatch(deleteContactThunk(id))}>
+  Delete
+</button>; */
+}
