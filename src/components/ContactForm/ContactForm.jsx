@@ -6,12 +6,12 @@ import { addContactThunk } from "../../redux/contacts/contactsOps";
 
 const validationSchema = Yup.object({
   name: Yup.string()
-    .required("This field is required!")
+    .required("Name is required!")
     .min(3, "Name must be more than 3 chars!")
     .max(20, "Name must be less than 20 chars!"),
   number: Yup.number()
     .typeError("It's not a number!")
-    .required("This field is required!"),
+    .required("Number is required!"),
 });
 
 const initialValues = {

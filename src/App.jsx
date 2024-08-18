@@ -1,7 +1,10 @@
 import { Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContactsThunk } from "./redux/contacts/contactsOps";
-import { selectLoading } from "./redux/contacts/contactsSlice";
+import {
+  selectIsModalOpen,
+  selectLoading,
+} from "./redux/contacts/contactsSlice";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { getMeThunk } from "./redux/auth/authOps";
@@ -21,12 +24,14 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const ClimbingBoxLoader = lazy(() =>
   import("react-spinners/ClimbingBoxLoader")
 );
+const Modal = lazy(() => import("./components/Modal/Modal"));
 
 function App() {
   const isLoading = useSelector(selectLoading);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
+  const isModalOpen = useSelector(selectIsModalOpen);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -37,6 +42,8 @@ function App() {
   useEffect(() => {
     dispatch(getMeThunk());
   }, [dispatch]);
+
+  console.log("isModalOpen:", isModalOpen);
 
   return isRefreshing ? (
     <Loading />
@@ -55,6 +62,10 @@ function App() {
               }
             />
           </Route>
+          {/* <Route
+            path="contacts/:contactId"
+            element={<PrivateRoute>{isModalOpen && <Modal />}</PrivateRoute>}
+          ></Route> */}
           <Route
             path="/login"
             element={
@@ -86,6 +97,7 @@ function App() {
             <ClimbingBoxLoader />
           </div>
         )}
+        {isModalOpen && <Modal />}
       </Suspense>
     </>
   );

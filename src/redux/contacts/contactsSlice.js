@@ -2,6 +2,7 @@ import { createSelector, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import {
   addContactThunk,
   deleteContactThunk,
+  editContactThunk,
   fetchContactsThunk,
 } from "./contactsOps";
 import { selectFilter } from "../filters/filtersSlice";
@@ -11,11 +12,25 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
+  selectedContactId: null,
+  isModalOpen: false,
 };
 
 const slice = createSlice({
   name: "contacts",
   initialState,
+  reducers: {
+    setSelectedContactId: (state, action) => {
+      state.selectedContactId = action.payload;
+    },
+    openModal: (state, action) => {
+      state.isModalOpen = true;
+    },
+    closeModal: (state, action) => {
+      state.isModalOpen = false;
+      state.selectedContactId = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchContactsThunk.fulfilled, (state, action) => {
@@ -27,6 +42,14 @@ const slice = createSlice({
       .addCase(addContactThunk.fulfilled, (state, action) => {
         state.items.push(action.payload);
       })
+      .addCase(editContactThunk.fulfilled, (state, action) => {
+        const index = state.items.findIndex(
+          (item) => item.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
       .addCase(logoutThunk.fulfilled, (state, action) => {
         return initialState;
       })
@@ -34,7 +57,8 @@ const slice = createSlice({
         isAnyOf(
           fetchContactsThunk.pending,
           deleteContactThunk.pending,
-          addContactThunk.pending
+          addContactThunk.pending,
+          editContactThunk.pending
         ),
         (state) => {
           state.loading = true;
@@ -45,7 +69,8 @@ const slice = createSlice({
         isAnyOf(
           fetchContactsThunk.rejected,
           deleteContactThunk.rejected,
-          addContactThunk.rejected
+          addContactThunk.rejected,
+          editContactThunk.rejected
         ),
         (state) => {
           state.loading = false;
@@ -56,7 +81,8 @@ const slice = createSlice({
         isAnyOf(
           fetchContactsThunk.fulfilled,
           deleteContactThunk.fulfilled,
-          addContactThunk.fulfilled
+          addContactThunk.fulfilled,
+          editContactThunk.fulfilled
         ),
         (state) => {
           state.loading = false;
@@ -81,3 +107,14 @@ export const selectFilteredContacts = createSelector(
 );
 
 export const contactsReducer = slice.reducer;
+
+export const selectContactById = (state, contactId) => {
+  return state.contacts.items.find((contact) => contact.id === contactId);
+};
+
+export const selectIsModalOpen = (state) => state.contacts.isModalOpen;
+
+export const selectSelectedContactId = (state) =>
+  state.contacts.selectedContactId;
+
+export const { setSelectedContactId, openModal, closeModal } = slice.actions;
