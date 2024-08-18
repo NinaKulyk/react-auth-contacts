@@ -11,12 +11,22 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import { getMeThunk } from "./redux/auth/authOps";
+import { selectIsLoggedIn } from "./redux/auth/authSlice";
 
 function App() {
   const isLoading = useSelector(selectLoading);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(fetchContactsThunk());
+    if (isLoggedIn) {
+      dispatch(fetchContactsThunk());
+    }
+  }, [dispatch, isLoggedIn]);
+
+  useEffect(() => {
+    dispatch(getMeThunk());
   }, [dispatch]);
 
   return (
