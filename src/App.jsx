@@ -1,22 +1,31 @@
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContactsThunk } from "./redux/contacts/contactsOps";
 import { selectLoading } from "./redux/contacts/contactsSlice";
-import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import AppBar from "./components/AppBar/AppBar";
-import HomePage from "./pages/HomePage/HomePage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import ContactsPage from "./pages/ContactsPage/ContactsPage";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import { getMeThunk } from "./redux/auth/authOps";
-import { selectIsLoggedIn } from "./redux/auth/authSlice";
+import { selectIsLoggedIn, selectIsRefreshing } from "./redux/auth/authSlice";
+import { PrivateRoute } from "./Routes/PrivateRoute";
+import { PublicRoute } from "./Routes/PublicRoute";
+import Loading from "./components/Loading/Loading";
+
+const AppBar = lazy(() => import("./components/AppBar/AppBar"));
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
+const RegistrationPage = lazy(() =>
+  import("./pages/RegistrationPage/RegistrationPage")
+);
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
+const ClimbingBoxLoader = lazy(() =>
+  import("react-spinners/ClimbingBoxLoader")
+);
 
 function App() {
   const isLoading = useSelector(selectLoading);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isRefreshing = useSelector(selectIsRefreshing);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,23 +38,55 @@ function App() {
     dispatch(getMeThunk());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <Loading />
+  ) : (
     <>
-      <Routes>
-        <Route path="/" element={<AppBar />}>
-          <Route index element={<HomePage />} />
-          <Route path="contacts" element={<ContactsPage />} />
-          {/* <Route path="logout" element={<LoginPage />} /> */}
-        </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<RegistrationPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-      {isLoading && (
-        <div className="loader">
-          <ClimbingBoxLoader />
-        </div>
-      )}
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<AppBar />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute>
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            />
+          </Route>
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/logout"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute>
+                <RegistrationPage />
+              </PublicRoute>
+            }
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        {isLoading && (
+          <div className="loader">
+            <ClimbingBoxLoader />
+          </div>
+        )}
+      </Suspense>
     </>
   );
 }

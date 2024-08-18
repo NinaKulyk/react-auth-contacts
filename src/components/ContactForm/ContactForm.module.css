@@ -7,7 +7,6 @@
 .formWrapper {
   min-width: 400px;
   margin-bottom: 40px;
-  border: none;
   box-shadow: 1px 1px 5px gray;
   display: flex;
   flex-direction: column;
