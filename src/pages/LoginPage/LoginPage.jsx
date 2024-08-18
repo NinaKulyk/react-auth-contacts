@@ -2,8 +2,8 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import s from "./LoginPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Navigate } from "react-router-dom";
-import { loginThunk } from "../../redux/auth/authOps";
-import { selectIsLoggedIn } from "../../redux/auth/authSlice";
+import { loginThunk } from "../../redux/auth/operations";
+import { selectIsLoggedIn } from "../../redux/auth/slice";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object({

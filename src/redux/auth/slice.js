@@ -1,5 +1,10 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { getMeThunk, loginThunk, logoutThunk, registerThunk } from "./authOps";
+import {
+  getMeThunk,
+  loginThunk,
+  logoutThunk,
+  registerThunk,
+} from "./operations";
 
 const initialState = {
   user: {

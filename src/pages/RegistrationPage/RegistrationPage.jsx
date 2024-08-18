@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import s from "./RegistrationPage.module.css";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { registerThunk } from "../../redux/auth/authOps";
+import { registerThunk } from "../../redux/auth/operations";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object({

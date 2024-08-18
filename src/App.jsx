@@ -1,14 +1,11 @@
 import { Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContactsThunk } from "./redux/contacts/contactsOps";
-import {
-  selectIsModalOpen,
-  selectLoading,
-} from "./redux/contacts/contactsSlice";
+import { fetchContactsThunk } from "./redux/contacts/operations";
+import { selectIsModalOpen, selectLoading } from "./redux/contacts/slice";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { getMeThunk } from "./redux/auth/authOps";
-import { selectIsLoggedIn, selectIsRefreshing } from "./redux/auth/authSlice";
+import { getMeThunk } from "./redux/auth/operations";
+import { selectIsLoggedIn, selectIsRefreshing } from "./redux/auth/slice";
 import { PrivateRoute } from "./Routes/PrivateRoute";
 import { PublicRoute } from "./Routes/PublicRoute";
 import Loading from "./components/Loading/Loading";

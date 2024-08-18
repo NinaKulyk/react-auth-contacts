@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import s from "./Contact.module.css";
 import { FaPhoneAlt, FaUser } from "react-icons/fa";
-import { deleteContactThunk } from "../../redux/contacts/contactsOps";
+import { deleteContactThunk } from "../../redux/contacts/operations";
 import {
   openModal,
   setModalType,
   setSelectedContactId,
-} from "../../redux/contacts/contactsSlice";
+} from "../../redux/contacts/slice";
 
 const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();

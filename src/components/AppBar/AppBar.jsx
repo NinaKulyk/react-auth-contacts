@@ -3,7 +3,7 @@ import AuthNav from "../AuthNav/AuthNav";
 import Navigation from "../Navigation/Navigation";
 import UserMenu from "../UserMenu/UserMenu";
 import s from "./AppBar.module.css";
-import { selectIsLoggedIn, selectUser } from "../../redux/auth/authSlice";
+import { selectIsLoggedIn, selectUser } from "../../redux/auth/slice";
 import { Outlet } from "react-router-dom";
 
 const AppBar = () => {

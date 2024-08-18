@@ -9,11 +9,11 @@ import {
   selectIsModalOpen,
   selectModalType,
   selectSelectedContactId,
-} from "../../redux/contacts/contactsSlice";
+} from "../../redux/contacts/slice";
 import {
   deleteContactThunk,
   editContactThunk,
-} from "../../redux/contacts/contactsOps";
+} from "../../redux/contacts/operations";
 
 ReactModal.setAppElement("#root");
 

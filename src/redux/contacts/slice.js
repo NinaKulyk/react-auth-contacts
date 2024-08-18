@@ -4,9 +4,9 @@ import {
   deleteContactThunk,
   editContactThunk,
   fetchContactsThunk,
-} from "./contactsOps";
-import { selectFilter } from "../filters/filtersSlice";
-import { logoutThunk } from "../auth/authOps";
+} from "./operations";
+import { selectFilter } from "../filters/slice";
+import { logoutThunk } from "../auth/operations";
 import toast from "react-hot-toast";
 
 const initialState = {

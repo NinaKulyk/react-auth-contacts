@@ -2,7 +2,7 @@ import s from "./UserMenu.module.css";
 import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 import { useDispatch } from "react-redux";
-import { logoutThunk } from "../../redux/auth/authOps";
+import { logoutThunk } from "../../redux/auth/operations";
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(s.link, isActive && s.active);
