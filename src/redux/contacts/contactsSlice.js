@@ -62,6 +62,10 @@ const slice = createSlice({
         );
         if (index !== -1) {
           state.items[index] = action.payload;
+          toast("Contact changed 🎉", {
+            duration: 3000,
+            style: { padding: "20px", fontSize: "18px" },
+          });
         }
       })
       .addCase(logoutThunk.fulfilled, (state, action) => {
