@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { getMeThunk, loginThunk, logoutThunk, registerThunk } from "./authOps";
 
 const initialState = {
@@ -25,7 +25,6 @@ const slice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.isRefreshing = true;
       })
       .addCase(getMeThunk.fulfilled, (state, action) => {
         state.isLoggedIn = true;
@@ -41,7 +40,13 @@ const slice = createSlice({
       })
       .addCase(getMeThunk.rejected, (state, action) => {
         state.isRefreshing = false;
-      });
+      })
+      .addMatcher(
+        isAnyOf(registerThunk.rejected, loginThunk.rejected),
+        (state, action) => {
+          state.isLoggedIn = false;
+        }
+      );
   },
 });
 
