@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Header from "./components/AppBar/AppBar";
+import AppBar from "./components/AppBar/AppBar";
 
 const Layout = () => {
   return (
     <div>
-      <App />
+      <AppBar />
       <Outlet />
     </div>
   );

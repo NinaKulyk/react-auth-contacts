@@ -1,24 +1,16 @@
 import s from "./UserMenu.module.css";
-import { NavLink } from "react-router-dom";
-import clsx from "clsx";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutThunk } from "../../redux/auth/operations";
-
-const buildLinkClass = ({ isActive }) => {
-  return clsx(s.link, isActive && s.active);
-};
+import { selectUser } from "../../redux/auth/slice";
 
 const UserMenu = () => {
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   return (
-    <div>
+    <div className={s.container}>
+      <h3 className={s.username}>{user.name}</h3>
       <ul className={s.list}>
-        <li className={s.item}>
-          <NavLink to="/contacts" className={buildLinkClass}>
-            Contacts
-          </NavLink>
-        </li>
         <li className={s.item}>
           <button className={s.btn} onClick={() => dispatch(logoutThunk())}>
             Logout

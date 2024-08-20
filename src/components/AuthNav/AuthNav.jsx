@@ -11,7 +11,7 @@ const AuthNav = () => {
     <div>
       <ul className={s.list}>
         <li className={s.item}>
-          <NavLink to="/signup" className={buildLinkClass}>
+          <NavLink to="/register" className={buildLinkClass}>
             Sign Up
           </NavLink>
         </li>

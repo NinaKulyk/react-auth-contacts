@@ -11,7 +11,7 @@ import { PublicRoute } from "./Routes/PublicRoute";
 import Loading from "./components/Loading/Loading";
 import { Toaster } from "react-hot-toast";
 
-const AppBar = lazy(() => import("./components/AppBar/AppBar"));
+const Layout = lazy(() => import("./Layout"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
@@ -48,7 +48,7 @@ function App() {
     <>
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/" element={<AppBar />}>
+          <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route
               path="contacts"
