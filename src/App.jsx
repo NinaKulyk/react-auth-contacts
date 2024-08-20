@@ -59,10 +59,6 @@ function App() {
               }
             />
           </Route>
-          {/* <Route
-            path="contacts/:contactId"
-            element={<PrivateRoute>{isModalOpen && <Modal />}</PrivateRoute>}
-          ></Route> */}
           <Route
             path="/login"
             element={
@@ -80,7 +76,7 @@ function App() {
             }
           />
           <Route
-            path="/signup"
+            path="/register"
             element={
               <PublicRoute>
                 <RegistrationPage />
