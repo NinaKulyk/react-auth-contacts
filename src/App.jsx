@@ -4,14 +4,14 @@ import { fetchContactsThunk } from "./redux/contacts/operations";
 import { selectIsModalOpen, selectLoading } from "./redux/contacts/slice";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { getMeThunk } from "./redux/auth/operations";
+import { refreshUser } from "./redux/auth/operations";
 import { selectIsLoggedIn, selectIsRefreshing } from "./redux/auth/slice";
 import { PrivateRoute } from "./Routes/PrivateRoute";
 import { PublicRoute } from "./Routes/PublicRoute";
 import Loading from "./components/Loading/Loading";
 import { Toaster } from "react-hot-toast";
 
-const Layout = lazy(() => import("./Layout"));
+const Layout = lazy(() => import("./components/Layout/Layout"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
@@ -39,7 +39,7 @@ function App() {
   }, [dispatch, isLoggedIn]);
 
   useEffect(() => {
-    dispatch(getMeThunk());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return isRefreshing ? (
