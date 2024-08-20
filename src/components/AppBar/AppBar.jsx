@@ -4,7 +4,6 @@ import Navigation from "../Navigation/Navigation";
 import UserMenu from "../UserMenu/UserMenu";
 import s from "./AppBar.module.css";
 import { selectIsLoggedIn } from "../../redux/auth/slice";
-import { Outlet } from "react-router-dom";
 
 const AppBar = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);

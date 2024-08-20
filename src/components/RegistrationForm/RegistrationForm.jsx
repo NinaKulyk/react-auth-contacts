@@ -29,7 +29,6 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
     dispatch(registerThunk(values));
     actions.resetForm();
   };

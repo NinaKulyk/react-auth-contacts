@@ -5,7 +5,7 @@ export const registerThunk = createAsyncThunk(
   "signup",
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await goitAPI.post("users/register", credentials);
+      const { data } = await goitAPI.post("users/signup", credentials);
       setToken(data.token);
       return data;
     } catch (error) {

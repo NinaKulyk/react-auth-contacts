@@ -114,9 +114,3 @@ const Modal = ({ id }) => {
 };
 
 export default Modal;
-
-{
-  /* <button id={id} type="button" onClick={() => dispatch(deleteContactThunk(id))}>
-  Delete
-</button>; */
-}
