@@ -1,7 +1,7 @@
 # React Auth Contacts
 
 A contact management app with user authentication. Built with React, Redux Toolkit, and Vite.  
-Deployed on [Vercel](https://react-auth-contacts.vercel.app).
+Deployed on [Vercel](https://react-auth-contacts-f42lxdaxm-nina-kulyks-projects.vercel.app/).
 
 ## 🚀 Tech Stack
 
@@ -23,7 +23,7 @@ Deployed on [Vercel](https://react-auth-contacts.vercel.app).
 
 ## 🔗 Live Demo
 
-👉 [View Live](https://react-auth-contacts.vercel.app)
+👉 [View Live](https://react-auth-contacts-f42lxdaxm-nina-kulyks-projects.vercel.app/)
 
 ---
 
