@@ -32,23 +32,23 @@ Deployed on [Vercel](https://react-auth-contacts.vercel.app).
 
 <table>
   <tr>
-    <td align="center"><img src="./screenshots/register.png" width="240"/><br/>Registration Page</td>
-    <td align="center"><img src="./screenshots/login.png" width="240"/><br/>Login Page</td>
+    <td align="center"><img src="./screenshots/register.png" width="300"/><br/>Registration Page</td>
+    <td align="center"><img src="./screenshots/login.png" width="300"/><br/>Login Page</td>
   </tr>
   <tr>
-    <td align="center"><img src="./screenshots/home.png" width="240"/><br/>Home Page</td>
-    <td align="center"><img src="./screenshots/contacts.png" width="240"/><br/>Contacts Page</td>
+    <td align="center"><img src="./screenshots/home.png" width="300"/><br/>Home Page</td>
+    <td align="center"><img src="./screenshots/contacts.png" width="300"/><br/>Contacts Page</td>
   </tr>
   <tr>
-    <td align="center"><img src="./screenshots/add.png" width="240"/><br/>Add New Contact</td>
-    <td align="center"><img src="./screenshots/edit.png" width="240"/><br/>Edit Contact</td>
+    <td align="center"><img src="./screenshots/add.png" width="300"/><br/>Add New Contact</td>
+    <td align="center"><img src="./screenshots/edit.png" width="300"/><br/>Edit Contact</td>
   </tr>
   <tr>
-    <td align="center"><img src="./screenshots/delete-confirm.png" width="240"/><br/>Delete Confirmation</td>
-    <td align="center"><img src="./screenshots/delete.png" width="240"/><br/>Contact Deleted</td>
+    <td align="center"><img src="./screenshots/delete-confirm.png" width="300"/><br/>Delete Confirmation</td>
+    <td align="center"><img src="./screenshots/delete.png" width="300"/><br/>Contact Deleted</td>
   </tr>
   <tr>
-    <td align="center"><img src="./screenshots/search.png" width="240"/><br/>Search Contacts</td>
-    <td align="center"><img src="./screenshots/validation.png" width="240"/><br/>Form Validation</td>
+    <td align="center"><img src="./screenshots/search.png" width="300"/><br/>Search Contacts</td>
+    <td align="center"><img src="./screenshots/validation.png" width="300"/><br/>Form Validation</td>
   </tr>
 </table>
