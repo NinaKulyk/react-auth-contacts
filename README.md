@@ -32,8 +32,8 @@ Deployed on [Vercel](https://react-auth-contacts.vercel.app).
 
 <table>
   <tr>
-    <td align="center"><img src="./screenshots/register.png" width="400"/><br/>Registration Page</td>
-    <td align="center"><img src="./screenshots/login.png" width="400"/><br/>Login Page</td>
+    <td align="center"><img src="./screenshots/register.png" width="500"/><br/>Registration Page</td>
+    <td align="center"><img src="./screenshots/login.png" width="500"/><br/>Login Page</td>
   </tr>
   <tr>
     <td align="center"><img src="./screenshots/home.png" width="400"/><br/>Home Page</td>
