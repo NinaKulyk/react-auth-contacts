@@ -20,7 +20,6 @@ Deployed on [Vercel](https://react-auth-contacts.vercel.app).
 - Contact list with add, edit, delete, and search
 - Form validation with inline feedback
 - Toast notifications for all actions (add, edit, delete)
-- Responsive design
 
 ## 🔗 Live Demo
 
@@ -36,19 +35,19 @@ Deployed on [Vercel](https://react-auth-contacts.vercel.app).
     <td align="center"><img src="./screenshots/login.png" width="500"/><br/>Login Page</td>
   </tr>
   <tr>
-    <td align="center"><img src="./screenshots/home.png" width="400"/><br/>Home Page</td>
-    <td align="center"><img src="./screenshots/contacts.png" width="400"/><br/>Contacts Page</td>
+    <td align="center"><img src="./screenshots/home.png" width="500"/><br/>Home Page</td>
+    <td align="center"><img src="./screenshots/contacts.png" width="500"/><br/>Contacts Page</td>
   </tr>
   <tr>
-    <td align="center"><img src="./screenshots/add.png" width="400"/><br/>Add New Contact</td>
-    <td align="center"><img src="./screenshots/edit.png" width="400"/><br/>Edit Contact</td>
+    <td align="center"><img src="./screenshots/add.png" width="500"/><br/>Add New Contact</td>
+    <td align="center"><img src="./screenshots/edit.png" width="500"/><br/>Edit Contact</td>
   </tr>
   <tr>
-    <td align="center"><img src="./screenshots/delete-confirm.png" width="400"/><br/>Delete Confirmation</td>
-    <td align="center"><img src="./screenshots/delete.png" width="400"/><br/>Contact Deleted</td>
+    <td align="center"><img src="./screenshots/delete-confirm.png" width="500"/><br/>Delete Confirmation</td>
+    <td align="center"><img src="./screenshots/delete.png" width="500"/><br/>Contact Deleted</td>
   </tr>
   <tr>
-    <td align="center"><img src="./screenshots/search.png" width="400"/><br/>Search Contacts</td>
-    <td align="center"><img src="./screenshots/validation.png" width="400"/><br/>Form Validation</td>
+    <td align="center"><img src="./screenshots/search.png" width="500"/><br/>Search Contacts</td>
+    <td align="center"><img src="./screenshots/validation.png" width="500"/><br/>Form Validation</td>
   </tr>
 </table>
